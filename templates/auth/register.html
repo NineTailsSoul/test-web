@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="auth-card">
+    <h2>Join Study Hub</h2>
+    <form action="{{ url_for('auth.register') }}" method="POST">
+        <div class="form-group">
+            <label for="username">Choose a Username:</label>
+            <input type="text" id="username" name="username" required>
+        </div>
+        <div class="form-group">
+            <label for="login_password">Set Login Password:</label>
+            <input type="password" id="login_password" name="login_password" required>
+        </div>
+        <div class="form-group">
+            <label for="chat_password">Set Chat Password:</label>
+            <input type="password" id="chat_password" name="chat_password" required>
+            <small>This separate password is required to open any chat for extra privacy.</small>
+        </div>
+        <button type="submit" class="btn btn-primary">Register</button>
+    </form>
+    <p>Already have an account? <a href="{{ url_for('auth.login') }}">Login here</a></p>
+</div>
+{% endblock %}

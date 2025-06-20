@@ -1,0 +1,9 @@
+Flask
+Flask-SocketIO
+Flask-Session
+Werkzeug
+PyCryptodome
+python-dotenv
+eventlet
+Flask-SQLAlchemy
+SQLAlchemy

@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="auth-card">
+    <h2>Add New Friend</h2>
+    <form action="{{ url_for('contacts.add_contact') }}" method="POST">
+        <div class="form-group">
+            <label for="friend_username">Friend's Username:</label>
+            <input type="text" id="friend_username" name="friend_username" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Add Friend</button>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StealthComm - Your Study App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/study_app_theme.css') }}">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/study_app_icon.png') }}">
+</head>
+<body>
+    <header class="app-header">
+        <div class="header-content">
+            <img src="{{ url_for('static', filename='images/study_app_logo.png') }}" alt="Study App Logo" class="app-logo">
+            <h1 class="app-title">Study Hub</h1> <nav class="main-nav">
+                {% if session.get('user_id') %}
+                    <a href="{{ url_for('chat.home') }}">Home</a>
+                    <a href="{{ url_for('contacts.add_contact') }}">Add Friend</a>
+                    {% if session.get('is_admin') %}
+                        <a href="{{ url_for('admin.dashboard') }}">Admin Panel</a>
+                    {% endif %}
+                    <a href="{{ url_for('auth.logout') }}">Logout (Discreet Exit)</a>
+                {% else %}
+                    <a href="{{ url_for('auth.login') }}">Login</a>
+                    <a href="{{ url_for('auth.register') }}">Register</a>
+                {% endif %}
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <ul class="flashes">
+                {% for category, message in messages %}
+                    <li class="{{ category }}">{{ message }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="app-footer">
+        <p>&copy; 2024 Study Hub. All rights reserved.</p>
+        <p class="footer-note">Optimized for quiet learning.</p>
+    </footer>
+
+    </body>
+</html>

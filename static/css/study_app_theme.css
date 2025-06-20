@@ -1,0 +1,153 @@
+/* static/css/study_app_theme.css */
+
+/* General neutral tones */
+:root {
+    --primary-color: #4CAF50; /* A soft, academic green */
+    --secondary-color: #FFC107; /* A warm, inviting yellow */
+    --text-color: #333333;
+    --background-color: #F5F5F5;
+    --card-background: #FFFFFF;
+    --border-color: #E0E0E0;
+    --button-bg: #8BC34A; /* Slightly muted green */
+    --button-hover-bg: #7CB342;
+    --link-color: #2196F3; /* A calm blue */
+}
+
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+.app-header {
+    background-color: var(--card-background);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.app-title {
+    color: var(--text-color);
+    font-weight: 600;
+}
+
+.main-nav a {
+    color: var(--text-color);
+}
+
+.main-nav a:hover {
+    color: var(--link-color);
+}
+
+.auth-card, .chat-container, .admin-dashboard {
+    background-color: var(--card-background);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05); /* Softer shadow */
+}
+
+h2, h3, h4 {
+    color: var(--text-color);
+}
+
+.form-group label {
+    color: var(--text-color);
+}
+
+.form-group input {
+    border-color: var(--border-color);
+}
+
+.btn-primary, #send-button {
+    background-color: var(--button-bg);
+    color: white;
+}
+
+.btn-primary:hover, #send-button:hover:not([disabled]) {
+    background-color: var(--button-hover-bg);
+}
+
+.flashes .success {
+    background-color: #E8F5E9; /* Lighter green */
+    color: #388E3C; /* Darker green */
+}
+
+.flashes .danger {
+    background-color: #FFEBEE; /* Lighter red */
+    color: #D32F2F; /* Darker red */
+}
+
+.flashes .info {
+    background-color: #E3F2FD; /* Lighter blue */
+    color: #1976D2; /* Darker blue */
+}
+
+/* Chat specific overrides for a neutral look */
+.sidebar {
+    background-color: var(--background-color);
+    border-right-color: var(--border-color);
+}
+
+.profile-info, .search-bar, .chat-list h4, .friends-list h4 {
+    border-color: var(--border-color);
+}
+
+.chat-item, .friend-item {
+    border-bottom-color: var(--border-color);
+}
+
+.chat-item:hover, .friend-item:hover {
+    background-color: #ECEFF1; /* Slightly darker background on hover */
+}
+
+.chat-main {
+    background-color: var(--card-background);
+}
+
+.chat-header {
+    background-color: var(--background-color);
+    border-bottom-color: var(--border-color);
+}
+
+.message-bubble.sent {
+    background-color: #E8F5E9; /* Softer sent message color */
+}
+
+.message-bubble.received {
+    background-color: #F0F4F7; /* Softer received message color */
+}
+
+.message-bubble .message-sender {
+    color: #555;
+}
+
+.message-bubble .message-time {
+    color: #999;
+}
+
+.chat-input-area {
+    background-color: var(--background-color);
+    border-top-color: var(--border-color);
+}
+
+#chat-unlock-password, #message-input {
+    border-color: var(--border-color);
+    background-color: var(--card-background);
+}
+
+.typing-indicator {
+    color: #777;
+}
+
+/* Admin panel styling adjustment */
+.admin-dashboard table th {
+    background-color: #F0F0F0; /* Lighter header for tables */
+}
+
+.admin-dashboard table td {
+    border-color: #EBEBEB;
+}
+
+/* Disguise specific elements (e.g., logos, icons) */
+.app-logo {
+    height: 50px; /* Adjust height as needed */
+    width: auto; /* Maintain aspect ratio */
+    object-fit: contain; /* Ensures image fits within the bounds */
+    margin-right: 15px;
+}

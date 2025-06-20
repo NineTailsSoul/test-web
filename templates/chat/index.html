@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="chat-container">
+    <div class="sidebar">
+        <div class="profile-info">
+            <span class="user-icon">👤</span>
+            <h3>{{ current_user.username }}</h3>
+        </div>
+        <div class="search-bar">
+            <input type="text" placeholder="Search friends or chats..." disabled>
+        </div>
+        <div class="chat-list">
+            <h4>Your Chats</h4>
+            {% if chats %}
+                {% for chat in chats %}
+                    <div class="chat-item" data-chat-id="{{ chat._id }}" data-chat-name="{{ chat.name }}">
+                        <div class="chat-avatar">
+                            <span class="icon">💬</span>
+                        </div>
+                        <div class="chat-preview">
+                            <div class="chat-name">{{ chat.name }}</div>
+                            <div class="last-message">{{ chat.last_message_preview }}</div>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p class="no-chats">No active chats. Add a friend to start!</p>
+            {% endif %}
+        </div>
+        <div class="friends-list">
+            <h4>Your Friends</h4>
+            {% if friends %}
+                {% for friend in friends %}
+                    <div class="friend-item" data-friend-username="{{ friend.username }}" data-friend-id="{{ friend._id }}">
+                        <span class="friend-icon">👥</span>
+                        {{ friend.username }}
+                        <button class="start-chat-btn" data-friend-username="{{ friend.username }}">Start Chat</button>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p class="no-friends">No friends added. <a href="{{ url_for('contacts.add_contact') }}">Add one!</a></p>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="chat-main">
+        <div class="chat-header">
+            <h3 id="current-chat-name">Select a Chat to Start</h3>
+        </div>
+        <div class="chat-messages" id="chat-messages-container">
+            <p class="empty-chat-message">Click on a chat to view messages.</p>
+        </div>
+        <div class="chat-input-area">
+            <input type="password" id="chat-unlock-password" placeholder="Enter chat password to unlock..." style="display: none;">
+            <div class="message-input-wrapper" style="display: none;">
+                <input type="text" id="message-input" placeholder="Type your message..." disabled>
+                <button id="send-button" disabled>Send</button>
+            </div>
+            <div class="typing-indicator" id="typing-indicator" style="display: none;">
+                <p>Someone is typing...</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.0/socket.io.min.js"></script>
+<script src="{{ url_for('static', filename='js/encryption.js') }}"></script>
+<script src="{{ url_for('static', filename='js/websocket_client.js') }}"></script>
+<script src="{{ url_for('static', filename='js/chat_ui.js') }}"></script>
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+{% endblock %}
